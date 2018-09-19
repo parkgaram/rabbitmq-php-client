@@ -4,9 +4,12 @@ namespace Dna\RabbitMq\Traits\Topic;
 
 trait DeclareExchangeTrait
 {
-    protected function declareQueue()
+    protected function declareExchange()
     {
-        list($this->queue_name, ,) = 
-        $this->channel->queue_declare($this->req_queue_name, false, false, true, false);
+        $this->channel->exchange_declare(
+            $this->exchange_name,
+            'topic',
+            false, false, false
+        );
     }
 }
